@@ -24,7 +24,7 @@ spec:
         imagePullPolicy: IfNotPresent
         command:
         - /heapster
-        - --source=kubernetes:https://deckard.funceme.br:6443
+        - --source=kubernetes:https://<you-dns-api>:<port-api-server>
         - --sink=influxdb:http://monitoring-influxdb.kube-system.svc:8086
 ---
 apiVersion: v1
