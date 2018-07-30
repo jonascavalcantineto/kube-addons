@@ -113,8 +113,7 @@ spec:
           # to it. Uncomment only if the default does not work.
           - --heapster-host=http://heapster.kube-system.svc
           - --kubeconfig=/certs/kubeconfig/kubeconfig
-          - --apiserver-host=https://<you-dns-api>:<port-api-server>
-          - --port=8443
+          - --apiserver-host=https://<myserver.mycompany.com>:6443
         volumeMounts:
         - name: kubeconfig
           mountPath: /certs/kubeconfig
@@ -153,7 +152,6 @@ spec:
   ports:
   - port: 80
     targetPort: 9090
-    nodePort: 8443
   selector:
     k8s-app: kubernetes-dashboard
   type: NodePort

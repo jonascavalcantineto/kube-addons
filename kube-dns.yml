@@ -129,11 +129,11 @@ spec:
           initialDelaySeconds: 3
           timeoutSeconds: 5
         args:
-        - --domain=cluster.local.
+        - --domain=<mycompany.com>.
         - --dns-port=10053
         - --config-dir=/kube-dns-config
         - --kubecfg-file=/certs/kubeconfig/kubeconfig
-        - --kube-master-url=https://<you-dns-api>:<port-api-server>
+        - --kube-master-url=https://<myserver.mycompany.com>:6443
         - --v=2
         env:
         - name: PROMETHEUS_PORT
@@ -174,7 +174,7 @@ spec:
         - --cache-size=1000
         - --no-negcache
         - --log-facility=-
-        - --server=/cluster.local/127.0.0.1#10053
+        - --server=/<mycompany.com>/127.0.0.1#10053
         - --server=/in-addr.arpa/127.0.0.1#10053
         - --server=/ip6.arpa/127.0.0.1#10053
         ports:
@@ -206,8 +206,8 @@ spec:
         args:
         - --v=2
         - --logtostderr
-        - --probe=kubedns,127.0.0.1:10053,kubernetes.default.svc.cluster.local,5,SRV
-        - --probe=dnsmasq,127.0.0.1:53,kubernetes.default.svc.cluster.local,5,SRV
+        - --probe=kubedns,127.0.0.1:10053,kubernetes.default.svc.<mycompany.com>,5,SRV
+        - --probe=dnsmasq,127.0.0.1:53,kubernetes.default.svc.<mycompany.com>,5,SRV
         ports:
         - containerPort: 10054
           name: metrics
